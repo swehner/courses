@@ -6,5 +6,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 	<bean id="userBo" class="com.tbc.courses.gui.UserBoImpl">
 		<property name="name" value="tbc.com" />
 	</bean>
+	<bean id="coursesView" class="com.tbc.courses.gui.CoursesView">
+	</bean>
 
 </beans>

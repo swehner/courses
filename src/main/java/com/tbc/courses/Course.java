@@ -1,6 +1,8 @@
 package com.tbc.courses;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,25 +16,43 @@ public class Course {
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
-	private String name;
+	private String title;
 	@ManyToOne
 	@JoinColumn(name = "teacher_id")
 	private Teacher teacher;
+	private Integer hours;
+	@Enumerated(EnumType.STRING)
+	private Level level;
+	private Boolean active;
 
 	public Course(){
 		
 	}
 	
-	public Course(String name) {
-		this.name = name;
+	public Course(String title, Teacher teacher, Integer hours, Level level,
+			boolean active) {
+		super();
+		this.title = title;
+		this.teacher = teacher;
+		this.hours = hours;
+		this.level = level;
+		this.active = active;
 	}
 
-	public String getName() {
-		return name;
+	public Integer getHours() {
+		return hours;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setHours(Integer hours) {
+		this.hours = hours;
+	}
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
 	}
 
 	public Teacher getTeacher() {
@@ -53,8 +73,25 @@ public class Course {
 		this.id = id;
 	}
 
+	public Boolean isActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", name=" + name + "]";
+		return "Course [title=" + title + ", hours=" + hours + ", level="
+				+ level + ", active=" + active + "]";
 	}
 }

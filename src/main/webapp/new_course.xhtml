@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
+</h:head>
+
+<h:body>
+
+	<h1>New Course</h1>
+
+	<f:view>
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Active" for="active" />
+				<h:selectBooleanCheckbox id="active" />
+
+				<h:outputLabel value="Teacher" for="teacher" />
+				<h:selectOneMenu id="teacher">
+					<f:selectItem id="item1" itemLabel="News" itemValue="1" />
+					<f:selectItem id="item2" itemLabel="Sports" itemValue="2" />
+				</h:selectOneMenu>
+
+				<h:outputLabel value="Title" for="title" />
+				<h:inputText id="title" />
+
+				<h:outputLabel value="Level" for="level" />
+				<h:selectOneMenu id="level">
+					<f:selectItem id="litem1" itemLabel="News" itemValue="1" />
+					<f:selectItem id="litem2" itemLabel="Sports" itemValue="2" />
+				</h:selectOneMenu>
+
+				<h:outputLabel value="Hours" for="hours" />
+				<p:spinner id="hours" />
+
+				<h:commandButton value="Add" />
+			</h:panelGrid>
+		</h:form>
+	</f:view>
+</h:body>
+
+</html>
