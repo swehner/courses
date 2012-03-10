@@ -18,7 +18,7 @@
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Active" for="active" />
-				<h:selectBooleanCheckbox id="active" />
+				<h:selectBooleanCheckbox id="active" value="#{coursesView.courseBacking.active}"/>
 
 				<h:outputLabel value="Teacher" for="teacher" />
 				<h:selectOneMenu id="teacher">
@@ -27,7 +27,7 @@
 				</h:selectOneMenu>
 
 				<h:outputLabel value="Title" for="title" />
-				<h:inputText id="title" />
+				<h:inputText id="title" value="#{coursesView.courseBacking.title}"/>
 
 				<h:outputLabel value="Level" for="level" />
 				<h:selectOneMenu id="level">
@@ -36,9 +36,9 @@
 				</h:selectOneMenu>
 
 				<h:outputLabel value="Hours" for="hours" />
-				<p:spinner id="hours" />
+				<p:spinner id="hours" value="#{coursesView.courseBacking.hours}"/>
 
-				<h:commandButton value="Add" />
+				<h:commandButton value="Add" action="#{coursesView.addCourse}"/>
 			</h:panelGrid>
 		</h:form>
 	</f:view>

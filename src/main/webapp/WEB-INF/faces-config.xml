@@ -9,22 +9,11 @@
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
 	</application>
 
-	<managed-bean>
-		<managed-bean-name>user</managed-bean-name>
-		<managed-bean-class>com.tbc.courses.gui.UserBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-		<managed-property>
-			<property-name>userBo</property-name>
-			<value>#{userBo}</value>
-		</managed-property>
-	</managed-bean>
-
-
 	<navigation-rule>
-		<from-view-id>courses.xhtml</from-view-id>
+		<from-view-id>/courses.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>new_course</from-outcome>
-			<to-view-id>new_course.xhtml</to-view-id>
+			<to-view-id>/new_course.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

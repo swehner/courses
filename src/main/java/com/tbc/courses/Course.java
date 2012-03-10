@@ -73,7 +73,7 @@ public class Course {
 		this.id = id;
 	}
 
-	public Boolean isActive() {
+	public Boolean getActive() {
 		return active;
 	}
 
