@@ -26,8 +26,14 @@ public class JpaCoursesService implements CoursesService, Serializable {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Course> findCourses() {
-		return em.createQuery("from Course", Course.class).getResultList();
+	public List<Course> findCourses(ListCriteria crit) {
+		String sortDir="desc";
+		if (crit!=null){
+			if (crit.getSortAsc())
+				sortDir="asc";
+		}
+			
+		return em.createQuery("from Course order by title " + sortDir, Course.class).getResultList();
 	}
 
 	@Override

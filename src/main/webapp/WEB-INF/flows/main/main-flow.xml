@@ -3,13 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
+	<var name="listCriteria" class="com.tbc.courses.ListCriteria"/>
+
 	<view-state id="courses">
 		<on-entry>
-			<evaluate expression="coursesService.findCourses()" result="viewScope.courses"
-				result-type="dataModel" />
+			<evaluate expression="coursesService.findCourses(listCriteria)" result="viewScope.courses"/>
 		</on-entry>
 		<transition on="new_course" to="new_course"/>
-	</view-state>
+		<transition on="toggle_sort" to="courses">
+			<evaluate expression="listCriteria.toggleSort()"/>
+		</transition>
+ 	</view-state>
+	
 	<view-state id="new_course">
 		<var name="course" class="com.tbc.courses.Course"/>
 		<transition on="add_course" to="courses">

@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CoursesService {
 
-	public abstract List<Course> findCourses();
+	public abstract List<Course> findCourses(ListCriteria crit);
 	
 	public abstract void persistCourse(Course course);
 

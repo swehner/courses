@@ -19,7 +19,7 @@
 				rows="5">
 				<p:column>
 					<f:facet name="header" id="titleHeader" sortBy="#{course.title}">
-						<h:outputText value="#{msg.titleHeader}" />
+						<h:commandLink value="#{msg.titleHeader}" action="toggle_sort" />
 					</f:facet>
 					<h:outputText value="#{course.title}" />
 				</p:column>
