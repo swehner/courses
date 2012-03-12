@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="courses">
+		<on-entry>
+			<evaluate expression="coursesService.findCourses()" result="viewScope.courses"
+				result-type="dataModel" />
+		</on-entry>
+		<transition on="new_course" to="new_course"/>
+	</view-state>
+	<view-state id="new_course">
+		<var name="course" class="com.tbc.courses.Course"/>
+		<transition on="add_course" to="courses">
+			<evaluate expression="coursesService.persistCourse(course)" />
+		</transition>
+		<transition on="cancel" to="courses"/>
+	</view-state>
+</flow>

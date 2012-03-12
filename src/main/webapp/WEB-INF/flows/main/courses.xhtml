@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/layouts/standard.xhtml">
+
+	<ui:define name="title">
+	#{msg.coursesTitle}
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:dataTable value="#{courses}" var="course" paginator="true"
+				rows="5">
+				<p:column>
+					<f:facet name="header" id="titleHeader" sortBy="#{course.title}">
+						<h:outputText value="#{msg.titleHeader}" />
+					</f:facet>
+					<h:outputText value="#{course.title}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.levelHeader}" />
+					</f:facet>
+					<h:outputText value="#{enums[course.level.ikey]}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg.hoursHeader}" />
+					</f:facet>
+					<h:outputText value="#{course.hours}" />
+				</p:column>
+			</p:dataTable>
+			<h:commandButton value="#{msg.newCourseAction}" action="new_course" />
+		</h:form>
+	</ui:define>
+</ui:composition>

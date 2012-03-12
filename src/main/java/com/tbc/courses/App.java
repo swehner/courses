@@ -1,6 +1,7 @@
 package com.tbc.courses;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -13,13 +14,16 @@ import javax.persistence.Persistence;
  * 
  */
 public class App {
-	public static List<Course> getCourses(){
-		List<Course> courses=new ArrayList<Course>();
-		Random random = new Random();
+	static Teacher[] teachers;
+	static List<Course> courses=new ArrayList<Course>();
 
-		Teacher[] teachers = new Teacher[] { new Teacher("Stefan Wehner"),
+	static{
+		teachers = new Teacher[] { new Teacher("Stefan Wehner"),
 				new Teacher("Perico de los palotes"), new Teacher("RMS") };
 
+		
+		Random random = new Random();
+		
 		String[] course_names = new String[] { "OOP1", "OOP2", "MTP1", "MTP2",
 				"MTP3", "HS1", "HS2", "HS3", "HS4", "Gañanismo 1",
 				"Gañanismo 2" };
@@ -34,6 +38,14 @@ public class App {
 			course.setLevel(levels[random.nextInt(levels.length)]);
 			courses.add(course);
 		}
+
+	}
+	
+	public static List<Teacher> getTeachers(){
+		return Arrays.asList(teachers);
+	}
+	
+	public static List<Course> getCourses(){
 		return courses;
 	}
 	
@@ -54,7 +66,7 @@ public class App {
 				.createEntityManager();
 		entityManager.getTransaction().begin();
 
-		// populate(entityManager);
+		populate(entityManager);
 
 		entityManager.getTransaction().commit();
 
@@ -65,7 +77,6 @@ public class App {
 			// System.out.println("Courses: " +
 			// course.getTeacher().getCourses());
 		}
-
 		entityManager.close();
 	}
 }

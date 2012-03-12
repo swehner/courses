@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/layouts/standard.xhtml">
+
+	<ui:define name="title">
+	#{msg.newCourseTitle}
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="#{msg.activeHeader}" for="active" />
+				<h:selectBooleanCheckbox id="active" value="#{course.active}" />
+
+				<h:outputLabel value="#{msg.teacherHeader}" for="teacher" />
+				<h:selectOneMenu id="teacher" value="#{course.teacher}"
+					converter="#{teacherConverter}">
+					<f:selectItems value="#{coursesService.teachers}" var="teacher"
+						id="teachers" itemLabel="#{teacher.name}" itemValue="#{teacher}" />
+				</h:selectOneMenu>
+
+				<h:outputLabel value="#{msg.titleHeader}" for="title" />
+				<h:inputText id="title" value="#{course.title}" />
+
+				<h:outputLabel value="#{msg.levelHeader}" for="level" />
+				<h:selectOneMenu id="level" value="#{course.level}">
+					<f:selectItems value="#{coursesService.levels}" var="level"
+						itemLabel="#{enums[level.ikey]}" />
+				</h:selectOneMenu>
+
+				<h:outputLabel value="#{msg.hoursHeader}" for="hours" />
+				<p:spinner id="hours" value="#{course.hours}" />
+
+				<h:commandButton value="#{msg.addAction}" action="add_course" />
+				<h:commandButton value="#{msg.cancelAction}" action="cancel" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
